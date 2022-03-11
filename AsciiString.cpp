@@ -23,7 +23,6 @@ std::ostream& operator<<(std::ostream& os, AsciiString asciiString)
     {
         int length = asciiString.data_.size() * asciiString.data_[0].getWidth()
             - (asciiString.data_.size() - 1) * asciiString.getOutputShift();
-    std::cout << "length: " << length << std::endl;
         std::vector<std::string> asciiAnswer;
         std::string spaceRow (length, ' ');
         for (int i = 0; i < asciiString.data_[0].getHeight(); ++i)
@@ -34,26 +33,21 @@ std::ostream& operator<<(std::ostream& os, AsciiString asciiString)
         for (int asciiCharNumber = 0; 
                 asciiCharNumber < asciiString.data_.size(); ++asciiCharNumber)
         {
-    std::cout << "char: " << asciiCharNumber << std::endl;
             for (int rowNumber = 0;
                     rowNumber < asciiString.data_[0].getHeight(); ++rowNumber)
             {
-    std::cout << "row: " << rowNumber << std::endl;
                 for (int charInRowNumber = 0;
                         charInRowNumber < asciiString.data_[0].getWidth();
                         ++charInRowNumber)
                 {
-    std::cout << "nCharRow: " << charInRowNumber << std::endl;
                     char currentChar = asciiString.data_[asciiCharNumber]
                         .getData()[rowNumber][charInRowNumber];
-    std::cout << "-" << currentChar << "-" << std::endl;
                     if (currentChar != ' ')
                     {
-    std::cout << "1" << std::endl;
                         int pos = 
-                            asciiCharNumber * asciiString.data_[0].getWidth() -
-                            (asciiString.data_.size() - 1) * 
-                            asciiString.getOutputShift() + charInRowNumber;
+                            asciiCharNumber * asciiString.data_[0].getWidth() 
+                            - asciiCharNumber * asciiString.getOutputShift()
+                            + charInRowNumber;
                         asciiAnswer[rowNumber][pos] = currentChar;
                     }
                 }

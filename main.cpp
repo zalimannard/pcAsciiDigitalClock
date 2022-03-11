@@ -20,9 +20,12 @@ int main()
         storage.set(tmp.getNonAsciiSymbol(), tmp);
     }
 
-    std::string phraseToPrint = "11:23";
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+
+    std::string phraseToPrint = std::to_string(tm.tm_hour) + ":" + std::to_string(tm.tm_min);
     AsciiString asciiString;
-    asciiString.setOutputShift(0);
+    asciiString.setOutputShift(4);
 
     for (auto ch : phraseToPrint)
     {
@@ -30,6 +33,5 @@ int main()
     }
     std::cout << asciiString << std::endl;
 
-    std::cout << "asdi" << std::endl;
     return 0;
 }
