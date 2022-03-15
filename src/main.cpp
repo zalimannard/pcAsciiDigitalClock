@@ -14,7 +14,7 @@
 int main()
 {
     AsciiStorage storage(13, 7);
-    std::ifstream fin("pctime.txt");
+    std::ifstream fin(std::string(std::getenv("HOME")) + "/.config/ProgrammingChallengeV4/pctime/pctime.txt");
     while (!fin.eof())
     {
         AsciiChar tmp(13, 7);
